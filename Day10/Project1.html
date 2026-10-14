@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: whitesmoke;
+        color: darkslategray;
+    }
+
+    nav {
+        width: 100%;
+        height: 70px;
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+    }
+
+    nav h2 {
+        color: white;
+        margin: 10px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+        margin: 10px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+    }
+
+    nav a:hover {
+        cursor: pointer;
+        color: deepskyblue;
+        text-decoration: underline;
+    }
+
+    .hero {
+        width: 100%;
+        height: 400px;
+        background-color: deepskyblue;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        background-color: white;
+        color: deepskyblue;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .btn:hover {
+        background-color: black;
+        color: white;
+    }
+
+    #about {
+        padding: 60px 20px;
+        text-align: center;
+        background-color: antiquewhite;
+    }
+
+    #about h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    #about p {
+        max-width: 700px;
+        margin: auto;
+        line-height: 1.6;
+    }
+
+    #services {
+        padding: 60px 20px;
+        text-align: center;
+        background-color: bisque;
+    }
+
+    #services h2 {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        margin-top: 2px;
+        width: 250px;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px gray;
+        background-color: blanchedalmond;
+    }
+
+    .card h3 {
+        margin-bottom: 15px;
+    }
+
+    #contact {
+        text-align: center;
+        background-color: rgb(246, 184, 103);
+        padding: 40px;
+    }
+
+    #contact h2 {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .text {
+        margin-bottom: 20px;
+    }
+
+    .info {
+        line-height: 2;
+    }
+
+    footer {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        height: 100px;
+    }
+
+</style>
+
+<body>
+
+    <nav>
+        <h2>My Website</h2>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to My Website</h1>
+        <p>A simple website built using HTML and CSS.</p>
+        <a href="#about" class="btn">Learn More</a>
+    </div>
+
+    <div id="about">
+        <h2>About Us</h2>
+        <p>This is a simple beginner-friendly website created using HTML and CSS. HTML is used to structure the webpage,
+            while CSS is used to style it.</p>
+    </div>
+
+    <div id="services">
+        <h2>Our Services</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Web Design</h3>
+                <p>Creating clean and modern website designs.</p>
+            </div>
+
+            <div class="card">
+                <h3>Development</h3>
+                <p>Building responsive websites using modern technologies.</p>
+            </div>
+
+            <div class="card">
+                <h3>Support</h3>
+                <p>Providing help and maintenance for websites.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact">
+        <h2>Contact Us</h2>
+        <p class="text">Have a question? Feel free to get in touch with us.</p>
+
+        <div class="info">
+            <p>Email: example@gmail.com</p>
+            <p>Phone: +91 9876543210</p>
+            <p>Location: Bangalore, India</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy 2026 MyWebsite. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apex Motors — discover exceptional luxury and performance vehicles.">
+    <title>APEX MOTORS | Drive Beyond Ordinary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #090a0b;
+            --panel: #111315;
+            --panel-2: #17191b;
+            --text: #f4f4f2;
+            --muted: #a3a6aa;
+            --red: #f32935;
+            --red-dark: #c91825;
+            --line: rgba(255, 255, 255, .12);
+            --max: 1240px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            width: min(var(--max), calc(100% - 48px));
+            margin-inline: auto;
+        }
+
+        .eyebrow {
+            color: var(--red);
+            font-size: .7rem;
+            font-weight: 800;
+            letter-spacing: .32em;
+            text-transform: uppercase;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 26px;
+        }
+
+        .section-heading h2 {
+            font-family: Manrope, sans-serif;
+            font-size: clamp(1.8rem, 3.3vw, 2.7rem);
+            line-height: 1.12;
+            letter-spacing: -.05em;
+        }
+
+        .section-heading .eyebrow {
+            margin-bottom: 7px;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 19px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background: var(--red);
+            color: white;
+            font-size: .82rem;
+            font-weight: 700;
+            transition: .25s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--red-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: rgba(255, 255, 255, .55);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #111;
+            border-color: white;
+        }
+
+        .arrow {
+            font-size: 1.15em;
+            line-height: 1;
+        }
+
+        /* Navigation */
+        .topbar {
+            position: absolute;
+            inset: 0 0 auto;
+            z-index: 10;
+            border-bottom: 1px solid rgba(255, 255, 255, .15);
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: Manrope, sans-serif;
+            font-weight: 800;
+            letter-spacing: .09em;
+            font-size: 1.28rem;
+            white-space: nowrap;
+        }
+
+        .logo-mark {
+            width: 35px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--red);
+            font-size: 1.8rem;
+            font-style: italic;
+            font-weight: 800;
+            transform: skew(-12deg);
+        }
+
+        .logo small {
+            display: block;
+            color: #c6c6c6;
+            font-size: .48rem;
+            letter-spacing: .38em;
+            line-height: 1.1;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(18px, 3vw, 38px);
+        }
+
+        .nav-links a {
+            font-size: .8rem;
+            color: #e4e4e4;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: white;
+        }
+
+        .nav-links a.active::after {
+            content: "";
+            display: block;
+            height: 2px;
+            margin-top: 7px;
+            background: var(--red);
+        }
+
+        .nav-cta {
+            white-space: nowrap;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--line);
+            color: white;
+            border-radius: 4px;
+            padding: 8px 10px;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            background: #121416;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background: url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2200&q=85") center 58% / cover no-repeat;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(90deg, rgba(5, 6, 7, .94) 0%, rgba(5, 6, 7, .78) 34%, rgba(5, 6, 7, .2) 72%, rgba(5, 6, 7, .35) 100%), linear-gradient(0deg, #090a0b 0%, transparent 23%, rgba(0, 0, 0, .2) 100%);
+        }
+
+        .hero-content {
+            padding-top: 96px;
+            padding-bottom: 42px;
+            max-width: 670px;
+        }
+
+        .hero .eyebrow {
+            color: #f5f5f5;
+            letter-spacing: .4em;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-family: Manrope, sans-serif;
+            font-size: clamp(3.4rem, 7.7vw, 6.6rem);
+            font-weight: 800;
+            letter-spacing: -.075em;
+            line-height: .94;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--red);
+        }
+
+        .hero-copy {
+            max-width: 480px;
+            margin: 24px 0 27px;
+            color: #d0d1d2;
+            font-size: 1rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            margin-top: 44px;
+        }
+
+        .hero-stat {
+            padding: 0 25px;
+            border-left: 1px solid rgba(255, 255, 255, .28);
+        }
+
+        .hero-stat:first-child {
+            padding-left: 0;
+            border-left: 0;
+        }
+
+        .hero-stat strong {
+            display: block;
+            font-family: Manrope, sans-serif;
+            font-size: 1.55rem;
+            line-height: 1.2;
+        }
+
+        .hero-stat span {
+            color: #c0c2c4;
+            font-size: .72rem;
+        }
+
+        /* Brand strip */
+        .brand-strip {
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            background: #0e1011;
+        }
+
+        .brands {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            min-height: 90px;
+            overflow: hidden;
+        }
+
+        .brand {
+            color: #c8cacc;
+            font-family: Manrope, sans-serif;
+            font-size: clamp(.8rem, 1.4vw, 1.15rem);
+            font-weight: 800;
+            letter-spacing: .08em;
+            opacity: .8;
+            white-space: nowrap;
+        }
+
+        .brand:nth-child(2),
+        .brand:nth-child(5) {
+            font-style: italic;
+        }
+
+        /* Vehicles */
+        .collection {
+            padding: 84px 0 70px;
+        }
+
+        .text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 13px;
+            border: 1px solid rgba(255, 255, 255, .35);
+            border-radius: 4px;
+            font-size: .76rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: .2s;
+        }
+
+        .text-link:hover {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .car-card {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            background: linear-gradient(150deg, #17191b, #0e0f10);
+            transition: transform .25s, border-color .25s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(243, 41, 53, .7);
+        }
+
+        .car-image {
+            height: 190px;
+            overflow: hidden;
+            background: #1c1e20 url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
+        }
+
+        .car-image img {
+            height: 100%;
+            transition: transform .5s;
+        }
+
+        .car-card:hover .car-image img {
+            transform: scale(1.06);
+        }
+
+        .car-info {
+            padding: 16px 16px 18px;
+        }
+
+        .car-tag {
+            color: var(--red);
+            font-size: .62rem;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .car-info h3 {
+            margin: 5px 0 2px;
+            font-family: Manrope, sans-serif;
+            font-size: 1rem;
+            line-height: 1.35;
+        }
+
+        .car-info p {
+            color: var(--muted);
+            font-size: .76rem;
+        }
+
+        .car-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid var(--line);
+        }
+
+        .price {
+            font-size: .9rem;
+            font-weight: 800;
+        }
+
+        .round-arrow {
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(255, 255, 255, .38);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            transition: .2s;
+        }
+
+        .round-arrow:hover {
+            color: white;
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        /* About */
+        .about {
+            padding: 20px 0 76px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: .95fr 1.25fr .7fr;
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .about-copy {
+            padding: 6px 0;
+        }
+
+        .about-copy h2 {
+            margin: 9px 0 16px;
+            max-width: 400px;
+            font-family: Manrope, sans-serif;
+            font-size: clamp(2rem, 3.3vw, 2.8rem);
+            line-height: 1.1;
+            letter-spacing: -.06em;
+        }
+
+        .about-copy p {
+            margin-bottom: 20px;
+            color: #b9bbbe;
+            font-size: .87rem;
+        }
+
+        .showroom-photo {
+            min-height: 330px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 7px;
+            background: #202326 url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+        }
+
+        .showroom-photo img {
+            height: 100%;
+            position: absolute;
+            inset: 0;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            padding: 22px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, .7), transparent 55%);
+        }
+
+        .photo-overlay span {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-weight: 700;
+            font-size: .8rem;
+        }
+
+        .play {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid white;
+            border-radius: 50%;
+        }
+
+        .benefits {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 23px;
+            padding: 24px 20px;
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, .04);
+            border-radius: 7px;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: start;
+            gap: 13px;
+        }
+
+        .benefit-icon {
+            flex: 0 0 32px;
+            height: 32px;
+            display: grid;
+            place-items: center;
+            color: var(--red);
+            border: 1px solid rgba(243, 41, 53, .5);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .benefit strong {
+            display: block;
+            font-size: .78rem;
+        }
+
+        .benefit p {
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: .68rem;
+        }
+
+        /* Values */
+        .values {
+            padding: 0 0 72px;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .value {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 23px 17px;
+            border-right: 1px solid var(--line);
+        }
+
+        .value:last-child {
+            border-right: 0;
+        }
+
+        .value-icon {
+            flex: 0 0 42px;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: #ff5b64;
+            background: linear-gradient(135deg, #502023, #17191b);
+            border: 1px solid rgba(243, 41, 53, .55);
+        }
+
+        \n .value-icon svg {
+            display: block;
+            width: 22px;
+            height: 22px;
+        }
+
+        .value strong {
+            display: block;
+            font-size: .78rem;
+        }
+
+        .value span {
+            display: block;
+            color: var(--muted);
+            font-size: .68rem;
+        }
+
+        /* Spotlight */
+        .spotlight {
+            min-height: 430px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            isolation: isolate;
+            border-block: 1px solid var(--line);
+        }
+
+        .spotlight::before {
+            content: "";
+            position: absolute;
+            z-index: -2;
+            inset: 0;
+            background: url("https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=2000&q=85") center 55% / cover no-repeat;
+        }
+
+        .spotlight::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(5, 6, 7, .04) 0%, rgba(5, 6, 7, .3) 42%, #090a0b 64%, #090a0b 100%);
+        }
+
+        .spotlight-content {
+            width: 48%;
+            margin-left: auto;
+            padding: 55px 0;
+        }
+
+        .spotlight-content h2 {
+            margin: 8px 0;
+            font-family: Manrope, sans-serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            letter-spacing: -.06em;
+            line-height: 1.08;
+        }
+
+        .spotlight-content>p {
+            color: #c0c2c4;
+            font-size: .86rem;
+        }
+
+        .specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 26px 0;
+        }
+
+        .spec {
+            padding-right: 10px;
+            border-right: 1px solid var(--line);
+        }
+
+        .spec:last-child {
+            border-right: 0;
+        }
+
+        .spec strong {
+            display: block;
+            font-family: Manrope, sans-serif;
+            font-size: 1.15rem;
+        }
+
+        .spec span {
+            color: var(--muted);
+            font-size: .68rem;
+        }
+
+        .spotlight-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .spotlight-price {
+            margin-right: 8px;
+            font-family: Manrope, sans-serif;
+            font-size: 1.65rem;
+            font-weight: 800;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 78px 0 82px;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+
+        .review {
+            padding: 23px;
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            background: linear-gradient(135deg, #151719, #0d0e0f);
+        }
+
+        .review-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, .2);
+        }
+
+        .review-head strong {
+            display: block;
+            font-size: .83rem;
+        }
+
+        .review-head span {
+            color: var(--muted);
+            font-size: .7rem;
+        }
+
+        .stars {
+            margin-left: auto;
+            color: #f4c542;
+            letter-spacing: .08em;
+            white-space: nowrap;
+        }
+
+        .review blockquote {
+            margin-top: 18px;
+            color: #c4c6c8;
+            font-size: .8rem;
+            line-height: 1.7;
+        }
+
+        /* Newsletter and footer */
+        .newsletter {
+            position: relative;
+            isolation: isolate;
+            padding: 36px 0;
+            border-block: 1px solid var(--line);
+        }
+
+        .newsletter::before {
+            content: "";
+            position: absolute;
+            z-index: -2;
+            inset: 0;
+            background: url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=80") center 54% / cover no-repeat;
+        }
+
+        .newsletter::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: 0;
+            background: rgba(5, 6, 7, .78);
+        }
+
+        .newsletter-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+        }
+
+        .newsletter h2 {
+            font-family: Manrope, sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            letter-spacing: -.04em;
+        }
+
+        .newsletter p {
+            color: #c6c7c8;
+            font-size: .8rem;
+        }
+
+        .subscribe {
+            display: flex;
+            gap: 9px;
+            width: min(470px, 100%);
+        }
+
+        .subscribe input {
+            width: 100%;
+            min-width: 0;
+            padding: 13px 14px;
+            border: 1px solid rgba(255, 255, 255, .42);
+            border-radius: 4px;
+            outline: none;
+            color: white;
+            background: rgba(10, 10, 10, .55);
+            font-size: .8rem;
+        }
+
+        .subscribe input:focus {
+            border-color: var(--red);
+        }
+
+        footer {
+            padding: 48px 0 22px;
+            background: #070808;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.3fr .7fr .9fr 1.2fr;
+            gap: 35px;
+            padding-bottom: 36px;
+        }
+
+        .footer-brand p {
+            max-width: 260px;
+            margin: 14px 0;
+            color: var(--muted);
+            font-size: .76rem;
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .socials a {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            font-size: .7rem;
+            transition: .2s;
+        }
+
+        .socials a:hover {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        .footer-col h3 {
+            margin-bottom: 15px;
+            font-size: .83rem;
+        }
+
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            margin: 8px 0;
+            color: var(--muted);
+            font-size: .74rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+            color: #777b7e;
+            font-size: .68rem;
+        }
+
+        @media (max-width: 1000px) {
+            .hero {
+                min-height: 660px;
+            }
+
+            .car-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-copy {
+                grid-column: 1 / -1;
+                max-width: 680px;
+            }
+
+            .benefits {
+                padding: 22px;
+            }
+
+            .value-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .value:nth-child(2) {
+                border-right: 0;
+            }
+
+            .value:nth-child(-n+2) {
+                border-bottom: 1px solid var(--line);
+            }
+
+            .spotlight-content {
+                width: 54%;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .container {
+                width: min(var(--max), calc(100% - 32px));
+            }
+
+            .nav {
+                min-height: 68px;
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 16px;
+                right: 16px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 16px;
+                background: #111315;
+                border: 1px solid var(--line);
+                border-radius: 6px;
+            }
+
+            .nav-links:target {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 12px 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .nav-links a:last-child {
+                border-bottom: 0;
+            }
+
+            .nav-links a.active::after {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .hero {
+                min-height: 690px;
+                align-items: end;
+            }
+
+            .hero::before {
+                background-position: 61% center;
+            }
+
+            .hero::after {
+                background: linear-gradient(0deg, #090a0b 0%, rgba(5, 6, 7, .87) 22%, rgba(5, 6, 7, .32) 75%, rgba(5, 6, 7, .25) 100%), linear-gradient(90deg, rgba(0, 0, 0, .35), transparent);
+            }
+
+            .hero-content {
+                padding-top: 150px;
+                padding-bottom: 30px;
+            }
+
+            .hero h1 {
+                font-size: clamp(3.25rem, 13vw, 5.4rem);
+            }
+
+            .hero-copy {
+                font-size: .9rem;
+            }
+
+            .hero-stat {
+                padding: 0 13px;
+            }
+
+            .hero-stat strong {
+                font-size: 1.25rem;
+            }
+
+            .hero-stat span {
+                font-size: .62rem;
+            }
+
+            .brands {
+                justify-content: flex-start;
+                overflow-x: auto;
+                min-height: 72px;
+            }
+
+            .brand {
+                font-size: .9rem;
+            }
+
+            .collection {
+                padding: 60px 0 50px;
+            }
+
+            .section-heading {
+                align-items: start;
+            }
+
+            .car-image {
+                height: 155px;
+            }
+
+            .car-info {
+                padding: 13px;
+            }
+
+            .car-info h3 {
+                font-size: .9rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-copy {
+                grid-column: auto;
+            }
+
+            .showroom-photo {
+                min-height: 280px;
+            }
+
+            .benefits {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 18px;
+            }
+
+            .value {
+                padding: 18px 10px;
+                gap: 10px;
+            }
+
+            .value-icon {
+                flex-basis: 36px;
+                height: 36px;
+            }
+
+            .value strong {
+                font-size: .72rem;
+            }
+
+            .value span {
+                font-size: .62rem;
+            }
+
+            .spotlight {
+                min-height: 640px;
+                align-items: end;
+            }
+
+            .spotlight::before {
+                background-position: 32% top;
+            }
+
+            .spotlight::after {
+                background: linear-gradient(0deg, #090a0b 0%, #090a0b 7%, rgba(9, 10, 11, .92) 37%, rgba(9, 10, 11, .1) 100%);
+            }
+
+            .spotlight-content {
+                width: 100%;
+                padding: 280px 0 35px;
+            }
+
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-inner {
+                align-items: start;
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .subscribe {
+                width: 100%;
+            }
+
+            .footer-grid {
+                gap: 26px 20px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .logo {
+                font-size: 1.05rem;
+            }
+
+            .logo-mark {
+                width: 28px;
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 3.05rem;
+            }
+
+            .hero-actions .btn {
+                flex: 1;
+                padding: 12px 10px;
+            }
+
+            .hero-stats {
+                justify-content: space-between;
+            }
+
+            .hero-stat {
+                padding: 0 8px;
+            }
+
+            .hero-stat strong {
+                font-size: 1.05rem;
+            }
+
+            .hero-stat span {
+                font-size: .56rem;
+            }
+
+            .car-grid {
+                gap: 10px;
+            }
+
+            .car-image {
+                height: 120px;
+            }
+
+            .car-info h3 {
+                font-size: .82rem;
+            }
+
+            .car-info p {
+                font-size: .68rem;
+            }
+
+            .price {
+                font-size: .78rem;
+            }
+
+            .round-arrow {
+                width: 29px;
+                height: 29px;
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .specs {
+                gap: 6px;
+            }
+
+            .spec strong {
+                font-size: 1rem;
+            }
+
+            .spotlight-price {
+                font-size: 1.35rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-brand,
+            .footer-col:last-child {
+                grid-column: 1 / -1;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+            .subscribe {
+                flex-direction: column;
+            }
+
+            .subscribe .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="container nav">
+            <a class="logo" href="#home" aria-label="Apex Motors home">
+                <span class="logo-mark">A</span><span>APEX <small>M O T O R S</small></span>
+            </a>
+            <nav class="nav-links" id="navigation" aria-label="Main navigation">
+                <a class="active" href="#home">Home</a>
+                <a href="#models">Models</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a class="btn nav-cta" href="#contact">Book a Test Drive <span class="arrow">→</span></a>
+            <a class="menu-toggle" href="#navigation" aria-label="Open navigation">☰</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <p class="eyebrow">Drive beyond ordinary</p>
+                    <h1>Luxury meets <span>performance.</span></h1>
+                    <p class="hero-copy">Discover a new era of driving with exceptional automobiles, iconic design, and
+                        an ownership experience tailored around you.</p>
+                    <div class="hero-actions">
+                        <a class="btn" href="#models">Explore Models <span class="arrow">→</span></a>
+                        <a class="btn btn-outline" href="#about"><span class="arrow">▷</span> Discover Apex</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat"><strong>50+</strong><span>Luxury models</span></div>
+                        <div class="hero-stat"><strong>20+</strong><span>Global brands</span></div>
+                        <div class="hero-stat"><strong>10K+</strong><span>Happy customers</span></div>
+                        <div class="hero-stat"><strong>15+</strong><span>Years of excellence</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="brand-strip" aria-label="Featured automotive brands">
+            <div class="container brands">
+                <span class="brand">BMW</span><span class="brand">MERCEDES-BENZ</span><span
+                    class="brand">AUDI</span><span class="brand">PORSCHE</span><span
+                    class="brand">LAMBORGHINI</span><span class="brand">FERRARI</span><span class="brand">McLAREN</span>
+            </div>
+        </section>
+
+        <section class="collection" id="models">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Our collection</p>
+                        <h2>Featured models</h2>
+                    </div>
+                    <a class="text-link" href="#contact">View all vehicles <span class="arrow">→</span></a>
+                </div>
+                <div class="car-grid">
+                    <article class="car-card">
+                        <div class="car-image"><img
+                                src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=85"
+                                alt="Black luxury sports car on a scenic road" loading="lazy"></div>
+                        <div class="car-info"><span class="car-tag">Hybrid supercar</span>
+                            <h3>Lamborghini Revuelto</h3>
+                            <p>Uncompromising power. Unmistakable presence.</p>
+                            <div class="car-bottom"><span class="price">₹8.89 Cr*</span><a class="round-arrow"
+                                    href="#contact" aria-label="Enquire about Lamborghini Revuelto">↗</a></div>
+                        </div>
+                    </article>
+                    <article class="car-card">
+                        <div class="car-image"><img
+                                src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=900&q=85"
+                                alt="Red exotic sports car" loading="lazy"></div>
+                        <div class="car-info"><span class="car-tag">Italian performance</span>
+                            <h3>Ferrari 296 GTB</h3>
+                            <p>Precision engineering with a racing soul.</p>
+                            <div class="car-bottom"><span class="price">₹5.40 Cr*</span><a class="round-arrow"
+                                    href="#contact" aria-label="Enquire about Ferrari 296 GTB">↗</a></div>
+                        </div>
+                    </article>
+                    <article class="car-card">
+                        <div class="car-image"><img
+                                src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=85"
+                                alt="Silver Porsche sports car" loading="lazy"></div>
+                        <div class="car-info"><span class="car-tag">Sports car</span>
+                            <h3>Porsche 911 Turbo S</h3>
+                            <p>Everyday usability. Extraordinary speed.</p>
+                            <div class="car-bottom"><span class="price">₹3.35 Cr*</span><a class="round-arrow"
+                                    href="#contact" aria-label="Enquire about Porsche 911 Turbo S">↗</a></div>
+                        </div>
+                    </article>
+                    <article class="car-card">
+                        <div class="car-image"><img
+                                src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&w=900&q=85"
+                                alt="Black Mercedes luxury coupe" loading="lazy"></div>
+                        <div class="car-info"><span class="car-tag">Performance coupe</span>
+                            <h3>Mercedes-AMG GT</h3>
+                            <p>Elegant lines. A commanding road presence.</p>
+                            <div class="car-bottom"><span class="price">₹2.45 Cr*</span><a class="round-arrow"
+                                    href="#contact" aria-label="Enquire about Mercedes-AMG GT">↗</a></div>
+                        </div>
+                    </article>
+                </div>
+                <p class="muted" style="font-size:.68rem;margin-top:13px;">*Illustrative starting prices for this demo
+                    design. Confirm current prices and availability with the showroom.</p>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container about-grid">
+                <div class="about-copy">
+                    <p class="eyebrow">About us</p>
+                    <h2>Redefining the driving experience.</h2>
+                    <p>At Apex Motors, we bring together the world's most desirable automobiles and a personal approach
+                        to premium ownership. From your first visit to every journey after, every detail is considered.
+                    </p>
+                    <p>Our specialists help you discover the right vehicle, understand every feature, and enjoy a
+                        seamless buying experience.</p>
+                    <a class="btn" href="#contact">Discover our story <span class="arrow">→</span></a>
+                </div>
+                <div class="showroom-photo">
+                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=85"
+                        alt="Luxury automobile showroom interior" loading="lazy">
+                    <div class="photo-overlay"><span><span class="play">▷</span> Explore our showroom</span></div>
+                </div>
+                <div class="benefits" id="services">
+                    <div class="benefit"><span class="benefit-icon">◇</span>
+                        <div><strong>Curated selection</strong>
+                            <p>Exceptional vehicles from leading marques.</p>
+                        </div>
+                    </div>
+                    <div class="benefit"><span class="benefit-icon">↗</span>
+                        <div><strong>Expert guidance</strong>
+                            <p>Personalised support from automotive specialists.</p>
+                        </div>
+                    </div>
+                    <div class="benefit"><span class="benefit-icon">▣</span>
+                        <div><strong>Flexible finance</strong>
+                            <p>Options designed around your requirements.</p>
+                        </div>
+                    </div>
+                    <div class="benefit"><span class="benefit-icon">✧</span>
+                        <div><strong>After-sales care</strong>
+                            <p>Support that continues after delivery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="values">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Why choose Apex</p>
+                        <h2>More than just a showroom</h2>
+                    </div>
+                </div>
+                <div class="value-grid">
+                    <div class="value">
+                        <span class="value-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 13.5 4.7 8.8A2 2 0 0 1 6.6 7.5h10.8a2 2 0 0 1 1.9 1.3l1.7 4.7" />
+                                <path d="M2.5 13.5h19v5h-19z" />
+                                <path d="M5 18.5v2M19 18.5v2M6 13.5l1.5-3h9l1.5 3" />
+                                <circle cx="6.2" cy="16" r=".8" />
+                                <circle cx="17.8" cy="16" r=".8" />
+                            </svg>
+                        </span>
+                        <div><strong>Authentic vehicles</strong><span>Verified and certified options</span></div>
+                    </div>
+                    <div class="value">
+                        <span class="value-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="7" r="3.2" />
+                                <path d="M5.5 20v-1.4a6.5 6.5 0 0 1 13 0V20z" />
+                                <path d="M18 4.5a3 3 0 0 1 0 5.8M20.5 19.5v-1a5 5 0 0 0-2-4" />
+                            </svg>
+                        </span>
+                        <div><strong>Personal service</strong><span>Tailored to your lifestyle</span></div>
+                    </div>
+                    <div class="value">
+                        <span class="value-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 14l1.8-4.8A2 2 0 0 1 6.7 8h10.6a2 2 0 0 1 1.9 1.2L21 14" />
+                                <path d="M2.5 14h19v4.5h-19zM5 18.5v2M19 18.5v2" />
+                                <path d="M8 5.5h8M12 3v2.5" />
+                            </svg>
+                        </span>
+                        <div><strong>Luxury experience</strong><span>A premium showroom visit</span></div>
+                    </div>
+                    <div class="value">
+                        <span class="value-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="9" />
+                                <ellipse cx="12" cy="12" rx="4" ry="9" />
+                                <path d="M3.5 9h17M3.5 15h17" />
+                            </svg>
+                        </span>
+                        <div><strong>Trusted network</strong><span>Access to sought-after models</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="spotlight" aria-label="Featured vehicle">
+            <div class="container">
+                <div class="spotlight-content">
+                    <p class="eyebrow">Featured this season</p>
+                    <h2>BMW M4 Competition</h2>
+                    <p>A striking blend of track-inspired performance, precise handling, and everyday comfort.</p>
+                    <div class="specs">
+                        <div class="spec"><strong>510 HP</strong><span>Horsepower</span></div>
+                        <div class="spec"><strong>3.5 s</strong><span>0–100 km/h*</span></div>
+                        <div class="spec"><strong>290 km/h</strong><span>Top speed*</span></div>
+                    </div>
+                    <div class="spotlight-bottom"><span class="spotlight-price">₹1.53 Cr*</span><a class="btn"
+                            href="#contact">View details <span class="arrow">→</span></a><a class="btn btn-outline"
+                            href="#contact">Book test drive</a></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">What our customers say</p>
+                        <h2>Trusted by car enthusiasts</h2>
+                    </div>
+                </div>
+                <div class="review-grid">
+                    <article class="review">
+                        <div class="review-head"><img class="avatar"
+                                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                                alt="" loading="lazy">
+                            <div><strong>Arjun Mehta</strong><span>Mumbai</span></div><span class="stars">★★★★★</span>
+                        </div>
+                        <blockquote>“An incredible experience. The team made every step of the purchase feel smooth,
+                            transparent, and memorable.”</blockquote>
+                    </article>
+                    <article class="review">
+                        <div class="review-head"><img class="avatar"
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+                                alt="" loading="lazy">
+                            <div><strong>Priya Sharma</strong><span>Delhi</span></div><span class="stars">★★★★★</span>
+                        </div>
+                        <blockquote>“Exceptional service and a stunning collection of cars. I felt informed and looked
+                            after throughout the process.”</blockquote>
+                    </article>
+                    <article class="review">
+                        <div class="review-head"><img class="avatar"
+                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80"
+                                alt="" loading="lazy">
+                            <div><strong>Karan Malhotra</strong><span>Bengaluru</span></div><span
+                                class="stars">★★★★★</span>
+                        </div>
+                        <blockquote>“Professional, transparent, and customer-focused. A truly premium showroom
+                            experience from start to finish.”</blockquote>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="container newsletter-inner">
+                <div>
+                    <h2>Stay in the fast lane.</h2>
+                    <p>Get new arrivals, exclusive updates, and automotive stories.</p>
+                </div>
+                <form class="subscribe" action="#" method="get">
+                    <input type="email" name="email" placeholder="Enter your email address" aria-label="Email address"
+                        required>
+                    <button class="btn" type="submit">Subscribe <span class="arrow">→</span></button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="logo" href="#home"><span class="logo-mark">A</span><span>APEX <small>M O T O R
+                                S</small></span></a>
+                    <p>Luxury cars. Exceptional service. Unforgettable journeys. Discover a better way to find your next
+                        car.</p>
+                    <div class="socials"><a href="#contact" aria-label="Instagram">ig</a><a href="#contact"
+                            aria-label="Facebook">f</a><a href="#contact" aria-label="YouTube">▶</a><a href="#contact"
+                            aria-label="X">𝕏</a></div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick links</h3><a href="#home">Home</a><a href="#models">Models</a><a href="#about">About
+                        us</a><a href="#services">Our services</a><a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Our services</h3><a href="#models">New cars</a><a href="#models">Pre-owned cars</a><a
+                        href="#services">Car financing</a><a href="#services">Vehicle servicing</a><a
+                        href="#services">Insurance support</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Visit our showroom</h3>
+                    <p>⌖ &nbsp;123 Luxury Drive, Mumbai, India</p>
+                    <p>☎ &nbsp;+91 98765 43210</p>
+                    <p>✉ &nbsp;info@apexmotors.com</p>
+                    <p>◷ &nbsp;Mon–Sat: 9:00 AM – 8:00 PM</p><a class="text-link" href="mailto:info@apexmotors.com">Send
+                        an enquiry ↗</a>
+                </div>
+            </div>
+            <div class="footer-bottom"><span>© 2026 Apex Motors. Demo website for learning purposes.</span><span>Privacy
+                    · Terms · Accessibility</span></div>
+        </div>
+    </footer>
+</body>
+
+</html>

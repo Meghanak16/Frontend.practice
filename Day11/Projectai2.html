@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MELODY — Sound Beyond Limits</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg: #080811;
+            --panel: #11111e;
+            --panel2: #171629;
+            --text: #f7f4ff;
+            --muted: #aaa6c0;
+            --red: #ff4264;
+            --purple: #a66bff;
+            --cyan: #58ddff;
+            --line: #302741;
+            --max: 1280px
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px
+        }
+
+        body {
+            font-family: 'DM Sans', Arial, sans-serif;
+            background: radial-gradient(ellipse at 8% 10%, #762cff12, transparent 30%), radial-gradient(ellipse at 95% 48%, #ff31510b, transparent 27%), var(--bg);
+            color: var(--text);
+            line-height: 1.6
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        img {
+            display: block;
+            max-width: 100%
+        }
+
+        .topline {
+            height: 3px;
+            background: linear-gradient(90deg, var(--red), var(--purple), var(--cyan))
+        }
+
+        .wrap {
+            width: min(var(--max), calc(100% - 64px));
+            margin: auto
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: #080811dc;
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid #ffffff14
+        }
+
+        .nav-inner {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px
+        }
+
+        .logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 31px;
+            letter-spacing: .1em
+        }
+
+        .logo span {
+            color: var(--red)
+        }
+
+        .logo small {
+            font: 600 9px 'DM Sans', sans-serif;
+            letter-spacing: .25em;
+            color: var(--muted);
+            display: block;
+            margin-top: -8px
+        }
+
+        .links {
+            display: flex;
+            gap: 30px;
+            list-style: none
+        }
+
+        .links a {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: #d2cde2;
+            transition: .2s
+        }
+
+        .links a:hover {
+            color: var(--red)
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 21px;
+            background: linear-gradient(100deg, var(--red), #a34fff);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            border: 0;
+            clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+            transition: .25s;
+            cursor: pointer
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.13);
+            box-shadow: 0 10px 35px #a13fff30
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #77618f;
+            clip-path: none
+        }
+
+        .hero {
+            min-height: 660px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 1px solid #ffffff13;
+            background: #080811
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #080811f7 0%, #080811e9 36%, #0808117a 66%, #08081140 100%), linear-gradient(0deg, #080811 0%, transparent 38%), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=2200&q=90') center 45%/cover no-repeat
+        }
+
+        .hero-bg:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 75% 40%, #a64dff2b, transparent 32%)
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 90px 0 80px;
+            max-width: 780px
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 10px;
+            letter-spacing: .27em;
+            text-transform: uppercase;
+            color: #d7c7ff;
+            font-weight: 700;
+            margin-bottom: 23px
+        }
+
+        .eyebrow:before {
+            content: "";
+            height: 2px;
+            width: 32px;
+            background: linear-gradient(90deg, var(--red), var(--purple))
+        }
+
+        h1,
+        h2,
+        h3,
+        .number {
+            font-family: 'Barlow Condensed', Impact, sans-serif;
+            text-transform: uppercase
+        }
+
+        .hero h1 {
+            font-size: clamp(4.5rem, 10vw, 8.5rem);
+            line-height: .87;
+            letter-spacing: -.025em;
+            margin-bottom: 26px
+        }
+
+        .gradient {
+            color: transparent;
+            background: linear-gradient(100deg, var(--red), #c05cff 60%, var(--cyan));
+            -webkit-background-clip: text;
+            background-clip: text
+        }
+
+        .hero p {
+            max-width: 500px;
+            color: #cbc6dd;
+            font-size: 15px;
+            line-height: 1.9;
+            margin-bottom: 30px
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 0;
+            margin-top: 56px;
+            max-width: 560px
+        }
+
+        .stat {
+            padding: 0 25px;
+            border-left: 1px solid #ffffff2c
+        }
+
+        .stat:first-child {
+            padding-left: 0;
+            border: 0
+        }
+
+        .stat strong {
+            display: block;
+            font: 800 31px 'Barlow Condensed', sans-serif;
+            line-height: 1.1
+        }
+
+        .stat span {
+            font-size: 9px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--muted)
+        }
+
+        .section {
+            padding: 94px 0
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 24px;
+            margin-bottom: 34px
+        }
+
+        .section-head h2 {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            line-height: .95;
+            letter-spacing: -.02em
+        }
+
+        .section-head p {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 12px
+        }
+
+        .kicker {
+            font-size: 10px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--purple);
+            font-weight: 700;
+            margin-bottom: 10px
+        }
+
+        .trending-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr 1fr;
+            gap: 17px
+        }
+
+        .album-card {
+            position: relative;
+            min-width: 0;
+            background: linear-gradient(145deg, #171426, #0c0b15);
+            border: 1px solid #ffffff19;
+            overflow: hidden;
+            transition: .25s
+        }
+
+        .album-card:hover {
+            transform: translateY(-5px);
+            border-color: #b45bff80
+        }
+
+        .album-art {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            background: #151321
+        }
+
+        .album-card:first-child .album-art {
+            height: 310px
+        }
+
+        .album-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(.8);
+            transition: .5s
+        }
+
+        .album-card:hover .album-art img {
+            transform: scale(1.05);
+            filter: saturate(1.1)
+        }
+
+        .album-art:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, #080811d9, transparent 75%)
+        }
+
+        .tag {
+            position: absolute;
+            z-index: 1;
+            top: 14px;
+            left: 14px;
+            background: #080811bf;
+            border: 1px solid #ffffff25;
+            padding: 6px 9px;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .15em
+        }
+
+        .album-details {
+            padding: 20px
+        }
+
+        .album-details small {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: var(--purple)
+        }
+
+        .album-details h3 {
+            font-size: 25px;
+            line-height: 1.1;
+            margin: 5px 0
+        }
+
+        .album-details p {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 17px;
+            padding-top: 14px;
+            border-top: 1px solid #ffffff16;
+            color: #d4cde6;
+            font-size: 11px
+        }
+
+        .play-icon {
+            width: 35px;
+            height: 35px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--red), var(--purple));
+            color: white;
+            font-size: 12px;
+            clip-path: polygon(0 0, 100% 0, 100% 72%, 72% 100%, 0 100%)
+        }
+
+        .playlist {
+            background: linear-gradient(180deg, #11101e, #0b0a14);
+            border-block: 1px solid #ffffff0d
+        }
+
+        .song-list {
+            max-width: 900px;
+            margin: auto
+        }
+
+        .song {
+            display: grid;
+            grid-template-columns: 42px 1fr auto auto;
+            align-items: center;
+            gap: 18px;
+            padding: 17px 20px;
+            border-bottom: 1px solid #ffffff13;
+            transition: .2s
+        }
+
+        .song:hover {
+            background: #ffffff06
+        }
+
+        .song-num {
+            font: 700 22px 'Barlow Condensed', sans-serif;
+            color: #7d7795
+        }
+
+        .song-name strong {
+            font-size: 13px;
+            display: block
+        }
+
+        .song-name small {
+            font-size: 11px;
+            color: var(--muted)
+        }
+
+        .song-time {
+            font-size: 11px;
+            color: var(--muted)
+        }
+
+        .song .play-icon {
+            width: 31px;
+            height: 31px
+        }
+
+        .genres-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr .8fr;
+            grid-template-rows: repeat(2, minmax(160px, 1fr));
+            gap: 13px
+        }
+
+        .genre {
+            position: relative;
+            overflow: hidden;
+            min-height: 170px;
+            display: flex;
+            align-items: end;
+            padding: 22px;
+            border: 1px solid #ffffff15;
+            background: #131220
+        }
+
+        .genre:first-child {
+            grid-row: span 2
+        }
+
+        .genre:nth-child(2) {
+            grid-column: span 2
+        }
+
+        .genre img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .62;
+            transition: .4s
+        }
+
+        .genre:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, #080811ef, transparent 85%), linear-gradient(90deg, #08081170, transparent)
+        }
+
+        .genre:hover img {
+            transform: scale(1.06);
+            opacity: .8
+        }
+
+        .genre-content {
+            position: relative;
+            z-index: 1
+        }
+
+        .genre-content small {
+            color: #d1a9ff;
+            font-size: 9px;
+            letter-spacing: .2em;
+            text-transform: uppercase
+        }
+
+        .genre h3 {
+            font-size: 30px;
+            line-height: 1.05
+        }
+
+        .genre p {
+            font-size: 11px;
+            color: #d0cadd;
+            margin-top: 5px
+        }
+
+        .artists {
+            background: #0e0d19;
+            border-block: 1px solid #ffffff0e
+        }
+
+        .artist-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px
+        }
+
+        .artist {
+            background: linear-gradient(145deg, #171426, #0b0a14);
+            border: 1px solid #ffffff15;
+            padding: 14px;
+            transition: .25s
+        }
+
+        .artist:hover {
+            transform: translateY(-5px);
+            border-color: #a66bff77
+        }
+
+        .artist-photo {
+            height: 205px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            background: #1b1529
+        }
+
+        .artist-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: .4s
+        }
+
+        .artist:hover img {
+            transform: scale(1.04);
+            filter: grayscale(0)
+        }
+
+        .artist h3 {
+            font-size: 23px
+        }
+
+        .artist p {
+            font-size: 11px;
+            color: var(--muted)
+        }
+
+        .artist .artist-type {
+            font-size: 9px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--purple);
+            margin-top: 8px
+        }
+
+        .charts-box {
+            max-width: 900px;
+            margin: auto
+        }
+
+        .chart {
+            display: grid;
+            grid-template-columns: 45px 55px 1fr auto;
+            gap: 18px;
+            align-items: center;
+            padding: 15px 18px;
+            border-bottom: 1px solid #ffffff15
+        }
+
+        .rank {
+            font: 700 23px 'Barlow Condensed', sans-serif;
+            color: var(--red)
+        }
+
+        .chart-thumb {
+            height: 52px;
+            width: 52px;
+            object-fit: cover
+        }
+
+        .chart-info h3 {
+            font: 700 19px 'Barlow Condensed', sans-serif;
+            letter-spacing: .02em
+        }
+
+        .chart-info p,
+        .plays {
+            font-size: 11px;
+            color: var(--muted)
+        }
+
+        .plays {
+            white-space: nowrap
+        }
+
+        .spotlight {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(110deg, #171022, #20102b 52%, #11101d);
+            border-block: 1px solid #ffffff14
+        }
+
+        .spotlight:after {
+            content: "";
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border: 1px solid #ffffff14;
+            border-radius: 50%;
+            right: -80px;
+            top: -160px;
+            box-shadow: 0 0 0 35px #ffffff04, 0 0 0 75px #ffffff03
+        }
+
+        .spotlight-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            align-items: center;
+            gap: 60px
+        }
+
+        .spotlight-photo {
+            height: 370px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #ffffff24
+        }
+
+        .spotlight-photo img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover
+        }
+
+        .spotlight-photo:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, #08081170, transparent)
+        }
+
+        .spotlight-copy h2 {
+            font-size: clamp(2.8rem, 5vw, 4.6rem);
+            line-height: .95;
+            margin-bottom: 18px
+        }
+
+        .spotlight-copy h3 {
+            font-size: 27px;
+            color: #d7aaff;
+            margin-bottom: 12px
+        }
+
+        .spotlight-copy p {
+            max-width: 470px;
+            color: #c3bdd5;
+            font-size: 13px;
+            line-height: 1.9;
+            margin-bottom: 25px
+        }
+
+        .newsletter {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(105deg, #7028a8, #b52b58 58%, #5532b8)
+        }
+
+        .newsletter:after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -180px;
+            width: 380px;
+            height: 380px;
+            border: 1px solid #ffffff30;
+            transform: rotate(35deg);
+            box-shadow: 0 0 0 40px #ffffff08, 0 0 0 80px #ffffff05
+        }
+
+        .newsletter-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px
+        }
+
+        .newsletter h2 {
+            font-size: clamp(2.6rem, 5vw, 4.3rem);
+            line-height: .95
+        }
+
+        .newsletter p {
+            font-size: 12px;
+            color: #f2dffb;
+            margin-top: 12px
+        }
+
+        .subscribe {
+            display: flex;
+            width: min(460px, 100%);
+            gap: 8px
+        }
+
+        .subscribe input {
+            min-width: 0;
+            flex: 1;
+            padding: 14px 16px;
+            border: 1px solid #ffffff5c;
+            background: #ffffffed;
+            color: #16111e;
+            outline: none;
+            border-radius: 0;
+            font: 12px 'DM Sans', sans-serif
+        }
+
+        .subscribe button {
+            padding: 0 19px;
+            background: #080811;
+            color: white;
+            border: 0;
+            font-weight: 700;
+            font-size: 10px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            cursor: pointer
+        }
+
+        footer {
+            background: #05050b;
+            padding: 45px 0 22px
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            align-items: start;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #ffffff14
+        }
+
+        .footer-brand p {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 8px
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 23px;
+            flex-wrap: wrap;
+            font-size: 11px;
+            color: #c5bfd7
+        }
+
+        .footer-links a:hover {
+            color: var(--red)
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding-top: 20px;
+            font-size: 10px;
+            color: #77728b
+        }
+
+        @media(max-width:900px) {
+            .wrap {
+                width: calc(100% - 40px)
+            }
+
+            .links {
+                gap: 16px
+            }
+
+            .links a {
+                font-size: 10px
+            }
+
+            .trending-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .album-card:first-child {
+                grid-column: 1/-1
+            }
+
+            .album-card:first-child .album-art {
+                height: 280px
+            }
+
+            .artist-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .spotlight-inner {
+                gap: 30px
+            }
+
+            .newsletter-inner {
+                align-items: flex-start;
+                flex-direction: column
+            }
+
+            .subscribe {
+                width: min(550px, 100%)
+            }
+        }
+
+        @media(max-width:620px) {
+            .wrap {
+                width: calc(100% - 32px)
+            }
+
+            .nav-inner {
+                height: 68px
+            }
+
+            .links {
+                display: none
+            }
+
+            .nav-inner>.btn {
+                padding: 11px 12px;
+                font-size: 9px
+            }
+
+            .logo {
+                font-size: 27px
+            }
+
+            .hero {
+                min-height: 670px
+            }
+
+            .hero-bg {
+                background-position: 58% center;
+                background-image: linear-gradient(90deg, #080811f5, #080811bc 78%, #08081188), linear-gradient(0deg, #080811 0%, transparent 48%), url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=85')
+            }
+
+            .hero-content {
+                padding: 90px 0 65px
+            }
+
+            .hero h1 {
+                font-size: clamp(4rem, 18vw, 6rem)
+            }
+
+            .hero p {
+                font-size: 13px
+            }
+
+            .hero-stats {
+                margin-top: 38px
+            }
+
+            .stat {
+                padding: 0 13px
+            }
+
+            .stat strong {
+                font-size: 25px
+            }
+
+            .stat span {
+                font-size: 8px
+            }
+
+            .section {
+                padding: 68px 0
+            }
+
+            .section-head {
+                align-items: flex-start;
+                flex-direction: column
+            }
+
+            .section-head h2 {
+                font-size: 2.8rem
+            }
+
+            .section-head>.btn {
+                align-self: flex-start
+            }
+
+            .trending-grid {
+                grid-template-columns: 1fr
+            }
+
+            .album-card:first-child {
+                grid-column: auto
+            }
+
+            .album-card:first-child .album-art,
+            .album-art {
+                height: 230px
+            }
+
+            .song {
+                grid-template-columns: 27px 1fr auto;
+                gap: 12px;
+                padding: 14px 8px
+            }
+
+            .song .play-icon {
+                display: none
+            }
+
+            .song-num {
+                font-size: 19px
+            }
+
+            .song-time {
+                font-size: 10px
+            }
+
+            .genres-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(3, 155px);
+                gap: 9px
+            }
+
+            .genre {
+                min-height: 155px;
+                padding: 14px
+            }
+
+            .genre:first-child {
+                grid-row: span 2
+            }
+
+            .genre:nth-child(2) {
+                grid-column: span 1
+            }
+
+            .genre h3 {
+                font-size: 24px
+            }
+
+            .genre p {
+                font-size: 10px
+            }
+
+            .artist-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px
+            }
+
+            .artist {
+                padding: 10px
+            }
+
+            .artist-photo {
+                height: 165px
+            }
+
+            .artist h3 {
+                font-size: 20px
+            }
+
+            .chart {
+                grid-template-columns: 30px 43px 1fr;
+                gap: 11px;
+                padding: 13px 4px
+            }
+
+            .chart-thumb {
+                height: 43px;
+                width: 43px
+            }
+
+            .chart-info h3 {
+                font-size: 17px
+            }
+
+            .plays {
+                display: none
+            }
+
+            .spotlight-inner {
+                grid-template-columns: 1fr;
+                gap: 26px
+            }
+
+            .spotlight-photo {
+                height: 270px
+            }
+
+            .spotlight-copy h2 {
+                font-size: 3.3rem
+            }
+
+            .newsletter h2 {
+                font-size: 3.1rem
+            }
+
+            .subscribe {
+                flex-direction: column
+            }
+
+            .subscribe input,
+            .subscribe button {
+                height: 48px
+            }
+
+            .footer-top,
+            .footer-bottom {
+                flex-direction: column
+            }
+
+            .footer-links {
+                gap: 15px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topline"></div>
+    <nav>
+        <div class="wrap nav-inner">
+            <a href="#home" class="logo">♫ MELODY<span>.</span><small>SOUND BEYOND LIMITS</small></a>
+            <ul class="links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#trending">Trending</a></li>
+                <li><a href="#genres">Genres</a></li>
+                <li><a href="#artists">Artists</a></li>
+                <li><a href="#charts">Charts</a></li>
+            </ul>
+            <a class="btn" href="#trending">Explore Music ↗</a>
+        </div>
+    </nav>
+    <header class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="wrap hero-content">
+            <div class="eyebrow">Your next favorite sound starts here</div>
+            <h1>FEEL THE<br><span class="gradient">MUSIC.</span><br>LIVE THE MOMENT.</h1>
+            <p>Discover emerging artists, find your next obsession, and explore sounds that move you. One destination
+                for every mood, every moment, every beat.</p>
+            <div class="hero-actions"><a href="#trending" class="btn">Explore the sound ↗</a><a href="#charts"
+                    class="btn btn-outline">View top charts</a></div>
+            <div class="hero-stats">
+                <div class="stat"><strong>50K<span class="gradient">+</span></strong><span>Tracks to discover</span>
+                </div>
+                <div class="stat"><strong>12K<span class="gradient">+</span></strong><span>Artists featured</span></div>
+                <div class="stat"><strong>24/7</strong><span>Music culture</span></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="section" id="trending">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">Fresh on rotation</div>
+                        <h2>TRENDING <span class="gradient">NOW</span></h2>
+                        <p>New sounds making noise right now.</p>
+                    </div><a class="btn btn-outline" href="#charts">See the charts ↗</a>
+                </div>
+                <div class="trending-grid">
+                    <article class="album-card">
+                        <div class="album-art"><img
+                                src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=85"
+                                alt="Singer performing under stage lights"><span class="tag">#01 · Trending</span></div>
+                        <div class="album-details"><small>Alt pop · 2026</small>
+                            <h3>Midnight Dreams</h3>
+                            <p>Alex Morgan</p>
+                            <div class="card-bottom"><span>4:02 · Single</span><span class="play-icon">▶</span></div>
+                        </div>
+                    </article>
+                    <article class="album-card">
+                        <div class="album-art"><img
+                                src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=85"
+                                alt="Crowd at a live music festival"><span class="tag">New release</span></div>
+                        <div class="album-details"><small>Indie rock · 2026</small>
+                            <h3>Into The Wild</h3>
+                            <p>The Waves</p>
+                            <div class="card-bottom"><span>3:48 · Single</span><span class="play-icon">▶</span></div>
+                        </div>
+                    </article>
+                    <article class="album-card">
+                        <div class="album-art"><img
+                                src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=800&q=85"
+                                alt="Dreamlike night sky"><span class="tag">Fan favorite</span></div>
+                        <div class="album-details"><small>Electronic · 2026</small>
+                            <h3>Dream State</h3>
+                            <p>Luna Sky</p>
+                            <div class="card-bottom"><span>3:36 · Single</span><span class="play-icon">▶</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section playlist">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">Curated for your mood</div>
+                        <h2>THE LATE NIGHT <span class="gradient">PLAYLIST</span></h2>
+                        <p>Four tracks for the hours when the world slows down.</p>
+                    </div>
+                </div>
+                <div class="song-list">
+                    <div class="song"><span class="song-num">01</span>
+                        <div class="song-name"><strong>Lost In The Night</strong><small>Alex Morgan · Midnight
+                                Dreams</small></div><span class="song-time">3:42</span><span class="play-icon">▶</span>
+                    </div>
+                    <div class="song"><span class="song-num">02</span>
+                        <div class="song-name"><strong>Electric Dreams</strong><small>Luna Sky · Afterglow</small></div>
+                        <span class="song-time">4:12</span><span class="play-icon">▶</span>
+                    </div>
+                    <div class="song"><span class="song-num">03</span>
+                        <div class="song-name"><strong>Ocean Eyes</strong><small>The Waves · Blue Hour</small></div>
+                        <span class="song-time">3:55</span><span class="play-icon">▶</span>
+                    </div>
+                    <div class="song"><span class="song-num">04</span>
+                        <div class="song-name"><strong>Runaway</strong><small>Nova · No Looking Back</small></div><span
+                            class="song-time">4:20</span><span class="play-icon">▶</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="genres">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">Find your frequency</div>
+                        <h2>EXPLORE <span class="gradient">GENRES</span></h2>
+                        <p>Pick a sound. Follow the feeling.</p>
+                    </div>
+                </div>
+                <div class="genres-grid">
+                    <a class="genre" href="#trending"><img
+                            src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=1000&q=85"
+                            alt="Rock concert stage">
+                        <div class="genre-content"><small>01 / Loud & alive</small>
+                            <h3>ROCK</h3>
+                            <p>Guitars up. World off.</p>
+                        </div>
+                    </a>
+                    <a class="genre" href="#trending"><img
+                            src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=700&q=85"
+                            alt="Pop performer">
+                        <div class="genre-content"><small>02 / On repeat</small>
+                            <h3>POP</h3>
+                            <p>Hooks that stay.</p>
+                        </div>
+                    </a>
+                    <a class="genre" href="#trending"><img
+                            src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&w=700&q=85"
+                            alt="Jazz musician performing">
+                        <div class="genre-content"><small>03 / Smooth flow</small>
+                            <h3>JAZZ</h3>
+                            <p>Let the night swing.</p>
+                        </div>
+                    </a>
+                    <a class="genre" href="#trending"><img
+                            src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=700&q=85"
+                            alt="Electronic music festival lights">
+                        <div class="genre-content"><small>04 / After hours</small>
+                            <h3>ELECTRONIC</h3>
+                            <p>Lose yourself in sound.</p>
+                        </div>
+                    </a>
+                    <a class="genre" href="#trending"><img
+                            src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=700&q=85"
+                            alt="Music studio instruments">
+                        <div class="genre-content"><small>05 / Timeless</small>
+                            <h3>CLASSICAL</h3>
+                            <p>Every note matters.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="section artists" id="artists">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">The people behind the sound</div>
+                        <h2>ARTISTS IN THE <span class="gradient">SPOTLIGHT</span></h2>
+                        <p>Discover the voices shaping the next wave.</p>
+                    </div><a class="btn btn-outline" href="#spotlight">Artist of the week ↗</a>
+                </div>
+                <div class="artist-grid">
+                    <article class="artist">
+                        <div class="artist-photo"><img
+                                src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=600&q=85"
+                                alt="Artist performing on stage"></div>
+                        <h3>Alex Morgan</h3>
+                        <p>Melodic pop with a late-night edge.</p>
+                        <div class="artist-type">Alt pop · Vocalist</div>
+                    </article>
+                    <article class="artist">
+                        <div class="artist-photo"><img
+                                src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=85"
+                                alt="Band playing live music"></div>
+                        <h3>The Waves</h3>
+                        <p>Big guitars and bigger feelings.</p>
+                        <div class="artist-type">Indie rock · Band</div>
+                    </article>
+                    <article class="artist">
+                        <div class="artist-photo"><img
+                                src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=85"
+                                alt="Singer under concert lighting"></div>
+                        <h3>Luna Sky</h3>
+                        <p>Dreamlike electronic soundscapes.</p>
+                        <div class="artist-type">Electronic · Producer</div>
+                    </article>
+                    <article class="artist">
+                        <div class="artist-photo"><img
+                                src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=600&q=85"
+                                alt="Performer on a dark concert stage"></div>
+                        <h3>Nova</h3>
+                        <p>Raw energy with a future-facing flow.</p>
+                        <div class="artist-type">Hip-hop · Performer</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="charts">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <div class="kicker">The sound of right now</div>
+                        <h2>GLOBAL <span class="gradient">TOP CHARTS</span></h2>
+                        <p>This week's most-played tracks on the Melody scene.</p>
+                    </div>
+                </div>
+                <div class="charts-box">
+                    <div class="chart"><span class="rank">01</span><img class="chart-thumb"
+                            src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=150&q=80"
+                            alt="">
+                        <div class="chart-info">
+                            <h3>Midnight Dreams</h3>
+                            <p>Alex Morgan</p>
+                        </div><span class="plays">24M plays</span>
+                    </div>
+                    <div class="chart"><span class="rank">02</span><img class="chart-thumb"
+                            src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=150&q=80"
+                            alt="">
+                        <div class="chart-info">
+                            <h3>Electric Dreams</h3>
+                            <p>Luna Sky</p>
+                        </div><span class="plays">21M plays</span>
+                    </div>
+                    <div class="chart"><span class="rank">03</span><img class="chart-thumb"
+                            src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=150&q=80"
+                            alt="">
+                        <div class="chart-info">
+                            <h3>Into The Wild</h3>
+                            <p>The Waves</p>
+                        </div><span class="plays">18M plays</span>
+                    </div>
+                    <div class="chart"><span class="rank">04</span><img class="chart-thumb"
+                            src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=150&q=80"
+                            alt="">
+                        <div class="chart-info">
+                            <h3>Ocean Eyes</h3>
+                            <p>The Waves</p>
+                        </div><span class="plays">15M plays</span>
+                    </div>
+                    <div class="chart"><span class="rank">05</span><img class="chart-thumb"
+                            src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=150&q=80"
+                            alt="">
+                        <div class="chart-info">
+                            <h3>Runaway</h3>
+                            <p>Nova</p>
+                        </div><span class="plays">13M plays</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section spotlight" id="spotlight">
+            <div class="wrap spotlight-inner">
+                <div class="spotlight-photo"><img
+                        src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&q=85"
+                        alt="Singer performing in purple stage lights"></div>
+                <div class="spotlight-copy">
+                    <div class="eyebrow">Melody presents · Artist of the week</div>
+                    <h2>MEET THE SOUND<br>OF <span class="gradient">TOMORROW.</span></h2>
+                    <h3>Luna Sky</h3>
+                    <p>Blending atmospheric synths, intimate vocals, and cinematic production, Luna Sky creates music
+                        that feels like a midnight drive through a city that never sleeps.</p><a class="btn"
+                        href="#charts">Discover the artist ↗</a>
+                </div>
+            </div>
+        </section>
+        <section class="section newsletter">
+            <div class="wrap newsletter-inner">
+                <div>
+                    <div class="eyebrow">Stay in the loop</div>
+                    <h2>NEVER MISS<br>A <span style="color:#ffe1ff">BEAT.</span></h2>
+                    <p>New releases, rising artists, and music culture — straight to your inbox.</p>
+                </div>
+                <form class="subscribe" action="#"><input type="email" placeholder="Enter your email address"
+                        aria-label="Email address" required><button type="submit">Join the list ↗</button></form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap">
+            <div class="footer-top">
+                <div class="footer-brand"><a href="#home" class="logo">♫ MELODY<span>.</span></a>
+                    <p>Music for every mood. Sound beyond limits.</p>
+                </div>
+                <div class="footer-links"><a href="#home">Home</a><a href="#trending">Trending</a><a
+                        href="#genres">Genres</a><a href="#artists">Artists</a><a href="#charts">Charts</a></div>
+            </div>
+            <div class="footer-bottom"><span>© 2026 Melody Music World. Demo website.</span><span>Made for music lovers,
+                    everywhere.</span></div>
+        </div>
+    </footer>
+</body>
+
+</html>
